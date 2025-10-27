@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import '../css/portfolio-preview.css';
 import '../css/main.css';
 
@@ -13,7 +14,7 @@ export default function PortfolioPreview() {
             <img src="images/ronin-run.JPG" alt="ronin-run"></img>
             <img src="images/ronin-bite.JPG" alt="ronin-bite"></img>
         </div>
-        <a href="portfolio.html">More Pictures Here!</a>
+        <Link to="/Portfolio">More Pictures Here!</Link>
     </section>
   );
 }
