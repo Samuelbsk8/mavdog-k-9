@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/mavdog-k-9/static/css/main.16b23487.css",
-    "main.js": "/mavdog-k-9/static/js/main.70871aa9.js",
+    "main.js": "/mavdog-k-9/static/js/main.8a219b66.js",
     "static/media/MavandKoda.jpg": "/mavdog-k-9/static/media/MavandKoda.7a6ea9503628ad8c649f.jpg",
     "static/media/cover.jpg": "/mavdog-k-9/static/media/cover.71a7364ec4a82f02c68a.jpg",
     "index.html": "/mavdog-k-9/index.html",
     "main.16b23487.css.map": "/mavdog-k-9/static/css/main.16b23487.css.map",
-    "main.70871aa9.js.map": "/mavdog-k-9/static/js/main.70871aa9.js.map"
+    "main.8a219b66.js.map": "/mavdog-k-9/static/js/main.8a219b66.js.map"
   },
   "entrypoints": [
     "static/css/main.16b23487.css",
-    "static/js/main.70871aa9.js"
+    "static/js/main.8a219b66.js"
   ]
 }
