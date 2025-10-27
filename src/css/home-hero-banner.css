@@ -1,0 +1,11 @@
+#home-first-look {
+    background-image: url(/public/images/cover.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#home-first-look img {
+    width:200px;
+    margin:150px;
+}

@@ -1,0 +1,19 @@
+footer {
+    background: var(--dark-color);
+    justify-content: center;
+    padding: 10px;
+    font-size: 2vw;
+}
+footer a {
+    padding:0 25px;
+    border-right: 1px solid var(--accent-rust);
+}
+footer a:last-child {
+    border:none;
+}
+
+@media (min-width: 768px) {
+    footer a {
+        font-size: 0.8vw;
+    }
+}

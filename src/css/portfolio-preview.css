@@ -1,0 +1,57 @@
+#pf-intro {
+    background:var(--accent-tan);
+    padding:40px;
+}
+#pf-intro #logo {
+    display: block;
+    width:150px;
+    margin:auto;
+}
+#pf-intro h1 {
+    display:block;
+    margin: 10px auto;
+    width:fit-content;
+    color: var(--light-color);
+}
+#pf-intro div {
+    width: 100%;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+}
+#pf-intro div img {
+    width: 100%;
+}
+#pf-intro a {
+    display: block;
+    background: var(--dark-color);
+    color:var(--accent-tan);
+    border:2px solid var(--mid-neutral);
+    padding: 12px;
+    font-size: 3vw;
+    border-radius: 10px;
+    width: fit-content;
+    margin: 20px auto;
+}
+#pf-intro a:hover {
+    background: var(--accent-tan);
+    color:var(--dark-color);
+    border-color: var(--dark-color);
+}
+
+
+@media (min-width: 768px) {
+    
+    #pf-intro div {
+        flex-direction: row;
+    }
+    #pf-intro div img {
+        width: 20%;
+    }
+    #pf-content {
+        column-count: 3;
+    }
+    #pf-intro a {
+        font-size: 1.5vw;
+    }
+}

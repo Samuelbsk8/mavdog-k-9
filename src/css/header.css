@@ -1,0 +1,132 @@
+header {
+    background: var(--primary-color);
+    width:100vw;
+}
+
+#header-contact {
+    background:var(--dark-color);
+    justify-content: right;
+    padding-right:5%;
+}
+
+#header-contact a {
+    text-align: center;
+    font-size: 2vw;
+    margin:2px 0;
+    padding:0 20px;
+}
+#header-contact a:first-child {
+    border-right: 1px solid var(--accent-rust);
+}
+
+#main-header {
+    justify-content: center;
+    display: flex;
+    align-items: center;   
+    gap: 20px;  
+}
+#main-header-h {
+    display: block;
+}
+#header-h1 {
+    margin:auto 0;
+    font-size: 5vw;
+}
+#header-h2 {
+    margin:0;
+    text-align: center;
+    font-size: 2.5vw;
+}
+header img {
+    width:80px;
+}
+
+#main-nav {
+    justify-content: center;
+    background:var(--dark-color);
+    flex-direction: column;
+    align-items: center;
+}
+#main-nav a {
+    text-align: center;
+    padding: 15px;
+    font-size: 18px;
+    border-bottom: 1px solid var(--accent-rust);
+    width: 100%;
+
+}
+#main-nav a:last-child {
+    border-bottom: none;
+}
+
+/* Hamburger menu */
+#hamburger-menu{
+    background: var(--dark-color);
+    width: 100%;
+    display: flex;
+    justify-content: right;
+}
+
+#hamburger-btn {
+    border: none;
+    background: none;
+    color: var(--accent-rust);
+    font-size: 2rem;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin:0;
+}
+
+#hamburger-btn:hover {
+    color:var(--accent-darkrust);
+}
+
+#main-nav {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+}
+
+#main-nav.show {
+    display: flex; 
+}
+
+
+#main-nav a {
+    padding: 15px;
+    border-bottom: 1px solid var(--accent-rust);
+    text-align: center;
+}
+
+@media (min-width: 768px) {
+    #header-contact a {
+        font-size: .8vw;
+    }
+
+    #hamburger-btn {
+        display: none;
+    }
+
+    #main-nav {
+        display: flex !important;  
+        flex-direction: row;
+        justify-content: center;
+        background: var(--dark-color);
+    }
+
+    #main-nav a {
+        padding: 10px 40px;
+        border-bottom: none;
+        width: fit-content;
+    }
+
+    #main-nav {
+        flex-direction: row;
+    }
+    #main-nav a {
+        padding:10px 40px;
+        font-size: 1.3vw;
+        border:none;
+        width:fit-content;
+    }
+}
