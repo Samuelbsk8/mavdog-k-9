@@ -1,15 +1,30 @@
 {
   "files": {
-    "main.css": "/mavdog-k-9/static/css/main.16b23487.css",
-    "main.js": "/mavdog-k-9/static/js/main.8a219b66.js",
+    "main.css": "/mavdog-k-9/static/css/main.87b82efa.css",
+    "main.js": "/mavdog-k-9/static/js/main.641bf6ac.js",
+    "static/media/5N1A3416.jpg": "/mavdog-k-9/static/media/5N1A3416.3505d2353dc25e7e80c9.jpg",
+    "static/media/5N1A3386.jpg": "/mavdog-k-9/static/media/5N1A3386.67ca492f9cbc32e6ef63.jpg",
+    "static/media/5N1A3441.jpg": "/mavdog-k-9/static/media/5N1A3441.21be704ccb829d6d5fcb.jpg",
+    "static/media/IMG_1928.jpg": "/mavdog-k-9/static/media/IMG_1928.382e4fab1d3fc04d71ad.jpg",
+    "static/media/IMG_1415.jpg": "/mavdog-k-9/static/media/IMG_1415.3d03fe06c826da8ad741.jpg",
     "static/media/MavandKoda.jpg": "/mavdog-k-9/static/media/MavandKoda.7a6ea9503628ad8c649f.jpg",
+    "static/media/IMG_0914.jpg": "/mavdog-k-9/static/media/IMG_0914.e0a4988c194d68285fbf.jpg",
+    "static/media/IMG_3474.jpg": "/mavdog-k-9/static/media/IMG_3474.8b7a375d8f915eaa3d41.jpg",
+    "static/media/ronin-walk.jpg": "/mavdog-k-9/static/media/ronin-walk.6d6a96b48f20f21d463c.jpg",
+    "static/media/ronin-sit.jpg": "/mavdog-k-9/static/media/ronin-sit.40a8710f59aff861c1b5.jpg",
+    "static/media/FullSizeRender.jpg": "/mavdog-k-9/static/media/FullSizeRender.420abe3eb3806d7fca78.jpg",
     "static/media/cover.jpg": "/mavdog-k-9/static/media/cover.71a7364ec4a82f02c68a.jpg",
+    "static/media/IMG_1967.jpg": "/mavdog-k-9/static/media/IMG_1967.7fb79ebaee2fea690939.jpg",
+    "static/media/harra-bark.jpg": "/mavdog-k-9/static/media/harra-bark.0e7c6bee4fffc4f6e917.jpg",
+    "static/media/ronin-bite.jpg": "/mavdog-k-9/static/media/ronin-bite.2ac7e3e67ec63c5940c8.jpg",
+    "static/media/Harra-laydown.jpg": "/mavdog-k-9/static/media/Harra-laydown.d7b0c5d7301f37dc9b20.jpg",
+    "static/media/ronin-run.jpg": "/mavdog-k-9/static/media/ronin-run.9e1dd6338b4ee8df8f2f.jpg",
     "index.html": "/mavdog-k-9/index.html",
-    "main.16b23487.css.map": "/mavdog-k-9/static/css/main.16b23487.css.map",
-    "main.8a219b66.js.map": "/mavdog-k-9/static/js/main.8a219b66.js.map"
+    "main.87b82efa.css.map": "/mavdog-k-9/static/css/main.87b82efa.css.map",
+    "main.641bf6ac.js.map": "/mavdog-k-9/static/js/main.641bf6ac.js.map"
   },
   "entrypoints": [
-    "static/css/main.16b23487.css",
-    "static/js/main.8a219b66.js"
+    "static/css/main.87b82efa.css",
+    "static/js/main.641bf6ac.js"
   ]
 }
