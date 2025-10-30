@@ -22,7 +22,7 @@
 #pf-intro div img {
     width: 100%;
 }
-#pf-intro a {
+#more-pictures {
     display: block;
     background: var(--dark-color);
     color:var(--accent-tan);
@@ -33,7 +33,7 @@
     width: fit-content;
     margin: 20px auto;
 }
-#pf-intro a:hover {
+#more-pictures:hover {
     background: var(--accent-tan);
     color:var(--dark-color);
     border-color: var(--dark-color);
