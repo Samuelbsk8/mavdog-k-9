@@ -1,23 +1,26 @@
 import React, { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import '../css/portfolio.css';
 import '../css/main.css';
 
 export default function PortfolioGallery({ images = [] }) {
+  const navigate = useNavigate();
+
   useEffect(() => {
     const imgs = document.querySelectorAll('#pf-content img');
     imgs.forEach(img => {
       img.style.cursor = 'pointer';
       img.addEventListener('click', () => {
-        window.location.href = 'Testimonials';
+        navigate('/testimonials'); // React Router navigation
       });
     });
 
     return () => {
       imgs.forEach(img => {
-        img.replaceWith(img.cloneNode(true));
+        img.replaceWith(img.cloneNode(true)); // Clean up listeners
       });
     };
-  }, []);
+  }, [navigate]);
 
   return (
     <section id="pf-main-content">
