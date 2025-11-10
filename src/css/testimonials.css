@@ -26,6 +26,10 @@
   border-radius: 10px;
 }
 
+.testimonial-card:hover{
+  cursor: pointer;
+}
+
 
 @media (min-width: 768px) {
   
