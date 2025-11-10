@@ -1,22 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
+import testimonials from "../testimonials.json";
 import "../css/testimonials.css";
+import TestimonialPopup from "./TestimonialPopup";
 
 export default function TestimonialCard() {
-  const [testimonials, setTestimonials] = useState([]);
+  const [selectedTestimonial, setSelectedTestimonial] = useState(null);
 
-  useEffect(() => {
-    fetch("https://mavdog-server-testimonials.onrender.com/api/testimonials")
-      .then((res) => {
-        if (!res.ok) throw new Error("Failed to fetch testimonials");
-        return res.json();
-      })
-      .then((data) => setTestimonials(data))
-      .catch((err) => console.error(err));
-  }, []);
-
-  if (!testimonials || testimonials.length === 0) {
-    return <p>Loading testimonials...</p>;
-  }
+  if (!testimonials || !Array.isArray(testimonials)) return null;
 
   return (
     <section id="testimonials-section">
@@ -28,14 +18,17 @@ export default function TestimonialCard() {
           const totalStars = 5;
           const filledStars = item.stars || 0;
           const starsArray = Array.from({ length: totalStars }, (_, i) => i < filledStars);
-
-          const imgSrc = item.img_name.startsWith("/")
+          const imgSrc = item.img_name.startsWith('/')
             ? item.img_name
             : `${process.env.PUBLIC_URL}/${item.img_name}`;
 
           return (
-            <div key={item._id || index} className="testimonial-card">
-              <img src={imgSrc} alt={item.dog_name || "Dog"} />
+            <div
+              key={item._id || index}
+              className="testimonial-card"
+              onClick={() => setSelectedTestimonial(item)}
+            >
+              <img src={imgSrc} alt={item.dog_name || 'Dog'} />
               <h2>{item.client_name} & {item.dog_name}</h2>
               <p>Training Type: {item.training_type}</p>
               <p className="stars">
@@ -48,8 +41,13 @@ export default function TestimonialCard() {
           );
         })}
       </div>
+
+      {selectedTestimonial && (
+        <TestimonialPopup
+          testimonial={selectedTestimonial}
+          onClose={() => setSelectedTestimonial(null)}
+        />
+      )}
     </section>
   );
 }
-
-
