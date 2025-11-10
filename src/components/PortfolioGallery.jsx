@@ -8,7 +8,7 @@ export default function PortfolioGallery({ images = [] }) {
     imgs.forEach(img => {
       img.style.cursor = 'pointer';
       img.addEventListener('click', () => {
-        window.location.href = 'testimonials';
+        window.location.href = 'Testimonials';
       });
     });
 
