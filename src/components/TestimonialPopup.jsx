@@ -7,10 +7,9 @@ export default function TestimonialPopup({ testimonial, onClose }) {
   const totalStars = 5;
   const filledStars = testimonial.stars || 0;
   const starsArray = Array.from({ length: totalStars }, (_, i) => i < filledStars);
-
-  const imgSrc = testimonial.img_name.startsWith('/')
-    ? testimonial.img_name
-    : `${process.env.PUBLIC_URL}/${testimonial.img_name}`;
+  const imgSrc = testimonial.img_name.startsWith("http")
+  ? testimonial.img_name
+  : `https://mavdog-server-testimonials.onrender.com/${testimonial.img_name}`;
 
   return (
     <div className="popup-overlay" onClick={onClose}>

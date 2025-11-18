@@ -46,6 +46,7 @@ export default function Header() {
         <HashLink smooth to="/#about">About Us</HashLink>
         <HashLink smooth to="/#services">Services</HashLink>
         <Link to="/Portfolio">Portfolio</Link>
+        <Link to="/Testimonials">Testimonials</Link>
         <HashLink smooth to="#contact">Contact</HashLink>
       </nav>
     </header>
