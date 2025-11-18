@@ -7,6 +7,7 @@ export default function TestimonialPopup({ testimonial, onClose }) {
   const totalStars = 5;
   const filledStars = testimonial.stars || 0;
   const starsArray = Array.from({ length: totalStars }, (_, i) => i < filledStars);
+
   const imgSrc = testimonial.img_name.startsWith('/')
     ? testimonial.img_name
     : `${process.env.PUBLIC_URL}/${testimonial.img_name}`;

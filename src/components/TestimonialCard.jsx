@@ -4,11 +4,12 @@ import "../css/testimonials.css";
 export default function TestimonialCard({ item, onClick }) {
   const totalStars = 5;
   const filledStars = item.stars || 0;
-  const starsArray = Array.from({ length: totalStars }, (_, i) => i < filledStars);
+  const starsArray = Array.from(
+    { length: totalStars },
+    (_, i) => i < filledStars
+  );
 
-  const imgSrc = item.img_name.startsWith("/")
-    ? item.img_name
-    : `${process.env.PUBLIC_URL}/${item.img_name}`;
+  const imgSrc = `https://mavdog-server-testimonials.onrender.com/${item.img_name}`;
 
   return (
     <div className="testimonial-card" onClick={onClick}>
