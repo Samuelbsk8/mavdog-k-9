@@ -1,4 +1,4 @@
-.popup-overlay {
+.modal-overlay {
   position: fixed;
   top: 0;
   left: 0;
@@ -12,7 +12,7 @@
   z-index: 9999;
 }
 
-.popup-content {
+.modal {
   background: var(--light-color);
   color: var(--dark-color);
   width: 90%;
@@ -24,14 +24,18 @@
   box-shadow: 0 0 25px rgba(0,0,0,0.35);
 }
 
+img{
+    width:50px;
+}
+
 .edit-form {
   display: flex;
   flex-direction: column;
   gap: 12px;
 }
 
-input,
-textarea {
+.edit-form input,
+.edit-form textarea {
   width: 100%;
   padding: 10px;
   border: 1px solid var(--mid-neutral);
@@ -39,8 +43,16 @@ textarea {
   background: var(--light-color);
 }
 
-.form-buttons button {
+.save-btn {
   background: var(--accent-sage);
+  color: white;
+  padding: 10px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.cancel-btn {
+  background: var(--accent-tan);
   color: white;
   padding: 10px 16px;
   border-radius: 6px;
