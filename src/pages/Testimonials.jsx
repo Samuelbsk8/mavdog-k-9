@@ -41,6 +41,14 @@ export default function Testimonials() {
       <h1>Client Testimonials</h1>
       {status && <p className="status">{status}</p>}
 
+      {showAdd && (
+        <AddTestimonial
+          closeDialog={() => setShowAdd(false)}
+          updateTestimonials={addHandler}
+          setStatus={setStatus}
+        />
+      )}
+
       <div id="testimonials-container" className="columns">
         {testimonials.map((item) => (
           <TestimonialCard key={item._id} item={item} onClick={() => setSelected(item)} />
