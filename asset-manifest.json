@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/mavdog-k-9/static/css/main.e9b82e83.css",
-    "main.js": "/mavdog-k-9/static/js/main.00c519d7.js",
+    "main.css": "/mavdog-k-9/static/css/main.bf2cd534.css",
+    "main.js": "/mavdog-k-9/static/js/main.98d39abc.js",
     "static/media/5N1A3416.jpg": "/mavdog-k-9/static/media/5N1A3416.3505d2353dc25e7e80c9.jpg",
     "static/media/5N1A3386.jpg": "/mavdog-k-9/static/media/5N1A3386.67ca492f9cbc32e6ef63.jpg",
     "static/media/5N1A3441.jpg": "/mavdog-k-9/static/media/5N1A3441.21be704ccb829d6d5fcb.jpg",
@@ -20,11 +20,11 @@
     "static/media/Harra-laydown.jpg": "/mavdog-k-9/static/media/Harra-laydown.d7b0c5d7301f37dc9b20.jpg",
     "static/media/ronin-run.jpg": "/mavdog-k-9/static/media/ronin-run.9e1dd6338b4ee8df8f2f.jpg",
     "index.html": "/mavdog-k-9/index.html",
-    "main.e9b82e83.css.map": "/mavdog-k-9/static/css/main.e9b82e83.css.map",
-    "main.00c519d7.js.map": "/mavdog-k-9/static/js/main.00c519d7.js.map"
+    "main.bf2cd534.css.map": "/mavdog-k-9/static/css/main.bf2cd534.css.map",
+    "main.98d39abc.js.map": "/mavdog-k-9/static/js/main.98d39abc.js.map"
   },
   "entrypoints": [
-    "static/css/main.e9b82e83.css",
-    "static/js/main.00c519d7.js"
+    "static/css/main.bf2cd534.css",
+    "static/js/main.98d39abc.js"
   ]
 }
