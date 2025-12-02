@@ -1,5 +1,6 @@
 import React from "react";
 import "../css/testimonialCard.css";
+import "../css/Testimonials.css";
 
 export default function TestimonialCard({ item, onClick }) {
   return (

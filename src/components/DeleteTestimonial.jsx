@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "../css/DeleteTestimonial.css";
+import "../css/Testimonials.css";
 
 export default function DeleteTestimonial({ testimonial, closeDialog, updateTestimonials }) {
   const [result, setResult] = useState("");

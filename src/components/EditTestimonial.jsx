@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "../css/EditTestimonial.css";
+import "../css/Testimonials.css";
 
 export default function EditTestimonial({ testimonial, closeDialog, updateTestimonials }) {
   const [result, setResult] = useState("");

@@ -1,5 +1,6 @@
 import React from "react";
 import "../css/testimonialPopup.css";
+import "../css/Testimonials.css";
 
 export default function TestimonialPopup({ testimonial, onClose, onEdit, onDelete }) {
   if (!testimonial) return null;
