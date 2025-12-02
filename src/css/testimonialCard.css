@@ -1,0 +1,26 @@
+.testimonial-card {
+  background: var(--accent-sage);
+  padding: 20px;
+  margin: 10px;
+  border-radius: 10px;
+  text-align: center;
+  width:100%;
+}
+
+.testimonial-card img { 
+  margin: auto;
+  width: 30%;
+  border-radius: 10px;
+}
+
+.testimonial-card:hover{
+  cursor: pointer;
+}
+
+.testimonial-card p {
+    color: var(--dark-color);
+}
+
+#stars{
+    color: gold;
+}

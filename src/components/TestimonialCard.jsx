@@ -1,23 +1,28 @@
 import React from "react";
-import "../css/testimonials.css";
-
-const API = process.env.REACT_APP_API_URL || "https://mavdog-server-testimonials.onrender.com";
+import "../css/testimonialCard";
 
 export default function TestimonialCard({ item, onClick }) {
   const totalStars = 5;
-  const filled = item.stars || 0;
-  const stars = Array.from({length: totalStars}, (_, i) => i < filled);
+  const filledStars = item.stars || 0;
+  const starsArray = Array.from(
+    { length: totalStars },
+    (_, i) => i < filledStars
+  );
 
-  const imgSrc = item.img_name
-    ? (item.img_name.startsWith("http") ? item.img_name : `${API}/${item.img_name}`)
-    : null;
+  const imgSrc = `https://mavdog-server-testimonials.onrender.com/${item.img_name}`;
 
   return (
     <div className="testimonial-card" onClick={onClick}>
-      {imgSrc ? <img src={imgSrc} alt={item.dog_name || "Dog"} /> : <div className="no-img">No image</div>}
-      <h2>{item.client_name} & {item.dog_name}</h2>
-      <p>Training Type: {item.training_type}</p>
-      <p className="stars">{stars.map((s,i)=>(<span key={i}>{s ? "★":"☆"}</span>))}</p>
+      <img src={imgSrc} alt={item.dog_name || "Dog"} />
+      <h2>
+        {item.client_name} & {item.dog_name}
+      </h2>
+      <p className="type">Training Type: {item.training_type}</p>
+      <p className="stars">
+        {starsArray.map((filled, i) => (
+          <span key={i}>{filled ? "★" : "☆"}</span>
+        ))}
+      </p>
       <p className="review">{item.review}</p>
     </div>
   );
