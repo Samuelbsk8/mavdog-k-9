@@ -38,7 +38,7 @@ export default function EditTestimonial({ testimonial, closeDialog, updateTestim
       }
     } catch (err) {
       console.error(err);
-      setResult("Network or server error");
+      setResult("Reload Page.");
     }
   };
 
@@ -59,7 +59,7 @@ export default function EditTestimonial({ testimonial, closeDialog, updateTestim
       }
     } catch (err) {
       console.error(err);
-      setResult("Network or server error");
+      setResult("Reload Page.");
     }
   };
 
