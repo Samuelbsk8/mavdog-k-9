@@ -38,8 +38,8 @@ export default function AddTestimonial({ closeDialog, updateTestimonials }) {
   };
 
   return (
-    <div className="popup-overlay">
-      <div className="popup-content form-popup">
+    <div className="modal-overlay">
+      <div className="modal">
         <button className="close-btn" onClick={closeDialog}>
           &times;
         </button>

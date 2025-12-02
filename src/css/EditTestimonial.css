@@ -1,4 +1,4 @@
-.modal-overlay {
+.popup-overlay {
   position: fixed;
   top: 0;
   left: 0;
@@ -12,7 +12,7 @@
   z-index: 9999;
 }
 
-.modal {
+.popup-content {
   background: var(--light-color);
   color: var(--dark-color);
   width: 90%;
@@ -30,8 +30,8 @@
   gap: 12px;
 }
 
-.edit-form input,
-.edit-form textarea {
+input,
+textarea {
   width: 100%;
   padding: 10px;
   border: 1px solid var(--mid-neutral);
@@ -39,16 +39,8 @@
   background: var(--light-color);
 }
 
-.save-btn {
+.form-buttons button {
   background: var(--accent-sage);
-  color: white;
-  padding: 10px 16px;
-  border-radius: 6px;
-  cursor: pointer;
-}
-
-.cancel-btn {
-  background: var(--accent-tan);
   color: white;
   padding: 10px 16px;
   border-radius: 6px;

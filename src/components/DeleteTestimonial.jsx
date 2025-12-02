@@ -23,8 +23,8 @@ export default function DeleteTestimonial({ testimonial, closeDialog, updateTest
   };
 
   return (
-    <div className="modal-overlay">
-      <div className="modal delete-modal">
+    <div className="modal">
+      <div className="delete-modal">
         <h2>Delete Testimonial</h2>
         <p>Are you sure you want to delete the testimonial from:</p>
         <h3>{testimonial.name}</h3>
