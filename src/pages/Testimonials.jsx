@@ -4,6 +4,7 @@ import TestimonialPopup from "../components/TestimonialPopup";
 import AddTestimonial from "../components/AddTestimonial";
 import EditTestimonial from "../components/EditTestimonial";
 import "../css/testimonials.css";
+import "../css/AddTestimonial.css"
 
 const API = process.env.REACT_APP_API_URL || "https://mavdog-server-testimonials.onrender.com";
 
