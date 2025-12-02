@@ -24,42 +24,42 @@ export default function Testimonials() {
         setTestimonials(data);
         setLoading(false);
       })
-      .catch((e) => {
-        console.error(e);
+      .catch((err) => {
+        console.error(err);
         setLoading(false);
       });
   }, []);
 
   const addHandler = (newReview) =>
-    setTestimonials((p) => [...p, newReview]);
+    setTestimonials((prev) => [...prev, newReview]);
 
   const updateHandler = (updated) =>
-    setTestimonials((p) =>
-      p.map((t) => (t._id === updated._id ? updated : t))
+    setTestimonials((prev) =>
+      prev.map((t) => (t._id === updated._id ? updated : t))
     );
 
   const deleteHandler = (id) =>
-    setTestimonials((p) => p.filter((t) => t._id !== id));
+    setTestimonials((prev) => prev.filter((t) => t._id !== id));
 
   if (loading) return <p>Loading testimonials...</p>;
 
   return (
     <section id="testimonials-section">
       <h1>Client Testimonials</h1>
-      {status && <p className="status">{status}</p>}
 
       <button className="add-btn" onClick={() => setShowAdd(true)}>
         + Add Testimonial
       </button>
 
+      {/* ADD */}
       {showAdd && (
         <AddTestimonial
           closeDialog={() => setShowAdd(false)}
           updateTestimonials={addHandler}
-          setStatus={setStatus}
         />
       )}
 
+      {/* EDIT */}
       {editing && (
         <EditTestimonial
           testimonial={editing}
@@ -68,28 +68,16 @@ export default function Testimonials() {
         />
       )}
 
+      {/* DELETE */}
       {deleting && (
         <DeleteTestimonial
           testimonial={deleting}
           closeDialog={() => setDeleting(null)}
-          confirmDelete={async () => {
-            const id = deleting._id;
-            const res = await fetch(`${API}/api/reviews/${id}`, {
-              method: "DELETE",
-            });
-
-            if (res.ok) {
-              deleteHandler(id);
-              setDeleting(null);
-              setSelected(null);
-              setStatus("Successfully deleted.");
-            } else {
-              setStatus("Delete failed.");
-            }
-          }}
+          updateTestimonials={deleteHandler}
         />
       )}
 
+      {/* LIST */}
       <div id="testimonials-container" className="columns">
         {testimonials.map((item) => (
           <TestimonialCard
@@ -100,6 +88,7 @@ export default function Testimonials() {
         ))}
       </div>
 
+      {/* POPUP */}
       {selected && (
         <TestimonialPopup
           testimonial={selected}
@@ -110,6 +99,7 @@ export default function Testimonials() {
           }}
           onDelete={() => {
             setDeleting(selected);
+            setSelected(null);
           }}
         />
       )}

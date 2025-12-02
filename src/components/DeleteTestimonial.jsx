@@ -1,31 +1,40 @@
-import React from "react";
-import "../css/deleteTestimonial.css";
+import React, { useState } from "react";
+import "../css/DeleteTestimonial.css";
 
-export default function DeleteTestimonial({ testimonial, closeDialog, confirmDelete }) {
+const API =
+  process.env.REACT_APP_API_URL ||
+  "https://mavdog-server-testimonials.onrender.com";
+
+export default function DeleteTestimonial({ testimonial, closeDialog, updateTestimonials }) {
+  const [result, setResult] = useState("");
+
+  const deleteReview = async () => {
+    const res = await fetch(`${API}/api/reviews/${testimonial._id}`, {
+      method: "DELETE",
+    });
+
+    if (res.ok) {
+      setResult("Deleted successfully");
+      updateTestimonials(testimonial._id);
+      closeDialog();
+    } else {
+      setResult("Delete failed");
+    }
+  };
+
   return (
-    <div className="delete-overlay">
-      <div className="delete-box">
-        <h2>Delete Testimonial?</h2>
+    <div className="modal-overlay">
+      <div className="modal delete-modal">
+        <h2>Delete Testimonial</h2>
+        <p>Are you sure you want to delete the testimonial from:</p>
+        <h3>{testimonial.name}</h3>
 
-        <p>
-          Are you sure you want to delete this testimonial from{" "}
-          <strong>{testimonial.name}</strong>?
-        </p>
-
-        <div className="delete-btn-row">
-          <button className="cancel-btn" onClick={closeDialog}>
-            Cancel
-          </button>
-
-          <button
-            className="delete-btn"
-            onClick={() => {
-              confirmDelete();
-            }}
-          >
-            Delete
-          </button>
+        <div className="modal-buttons">
+          <button className="cancel-btn" onClick={closeDialog}>Cancel</button>
+          <button className="delete-btn" onClick={deleteReview}>Delete</button>
         </div>
+
+        <p className="result">{result}</p>
       </div>
     </div>
   );
