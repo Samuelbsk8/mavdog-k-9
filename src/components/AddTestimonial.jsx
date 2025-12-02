@@ -16,7 +16,7 @@ export default function AddTestimonial({ closeDialog, updateTestimonials }) {
     const formData = new FormData(e.target);
 
     try {
-      const res = await fetch("https://mavdog-server-testimonials.onrender.com/api/reviews", {
+      const res = await fetch(`${process.env.REACT_APP_API_URL}/api/reviews`, {
         method: "POST",
         body: formData,
       });
@@ -29,7 +29,8 @@ export default function AddTestimonial({ closeDialog, updateTestimonials }) {
         setPreview("");
         closeDialog();
       } else {
-        setResult("Error adding testimonial");
+        const errMsg = await res.text();
+        setResult(errMsg || "Error adding testimonial");
       }
     } catch (err) {
       console.error(err);
@@ -38,13 +39,13 @@ export default function AddTestimonial({ closeDialog, updateTestimonials }) {
   };
 
   return (
-    <div className="modal-overlay">
-      <div className="modal-content">
-        <button className="modal-close" onClick={closeDialog}>
+    <div className="popup-overlay">
+      <div className="popup-content form-popup">
+        <button className="close-btn" onClick={closeDialog}>
           &times;
         </button>
 
-        <form id="add-testimonial-form" onSubmit={submitForm}>
+        <form onSubmit={submitForm}>
           <h3>Add New Testimonial</h3>
 
           <label>Client Name:</label>
@@ -64,20 +65,13 @@ export default function AddTestimonial({ closeDialog, updateTestimonials }) {
 
           <div className="image-row">
             {preview && <img src={preview} alt="preview" id="img-prev" />}
-
             <div>
               <label>Upload Image:</label>
-              <input
-                type="file"
-                name="img"
-                accept="image/*"
-                onChange={uploadImage}
-              />
+              <input type="file" name="img" accept="image/*" onChange={uploadImage} />
             </div>
           </div>
 
           <button type="submit">Submit</button>
-
           <p>{result}</p>
         </form>
       </div>

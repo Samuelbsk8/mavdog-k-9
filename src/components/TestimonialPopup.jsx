@@ -1,15 +1,15 @@
 import React from "react";
 import "../css/testimonialPopup.css";
 
-export default function TestimonialPopup({ testimonial, onClose }) {
+export default function TestimonialPopup({ testimonial, onClose, onEdit, onDelete }) {
   if (!testimonial) return null;
 
   const totalStars = 5;
   const filledStars = testimonial.stars || 0;
   const starsArray = Array.from({ length: totalStars }, (_, i) => i < filledStars);
-  const imgSrc = testimonial.img_name.startsWith("http")
-  ? testimonial.img_name
-  : `https://mavdog-server-testimonials.onrender.com/${testimonial.img_name}`;
+  const imgSrc = testimonial.img_name.startsWith('/')
+    ? testimonial.img_name
+    : `${process.env.PUBLIC_URL}/${testimonial.img_name}`;
 
   return (
     <div className="popup-overlay" onClick={onClose}>
@@ -29,6 +29,11 @@ export default function TestimonialPopup({ testimonial, onClose }) {
         <div className="popup-body">
           <p><strong>Training Type:</strong> {testimonial.training_type}</p>
           <p className="popup-review">“{testimonial.review}”</p>
+
+          <div className="popup-actions">
+            <button className="edit-btn" onClick={() => onEdit(testimonial)}>Edit</button>
+            <button className="delete-btn" onClick={() => onDelete(testimonial)}>Delete</button>
+          </div>
         </div>
       </div>
     </div>
