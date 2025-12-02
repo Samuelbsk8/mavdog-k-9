@@ -1,5 +1,5 @@
 import React from "react";
-import "../css/TestimonialCard.css";
+import "../css/testimonials.css";
 
 export default function TestimonialCard({ item, onClick }) {
   const starsArray = Array.from({ length: 5 }, (_, i) => i < item.stars);
