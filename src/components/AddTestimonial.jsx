@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 import "../css/AddTestimonial.css";
 
+const API = process.env.REACT_APP_API_URL || "http://localhost:3001";
+
 export default function AddTestimonial({ closeDialog, updateTestimonials }) {
   const [result, setResult] = useState("");
   const [preview, setPreview] = useState("");
 
   const uploadImage = (e) => {
-    setPreview(URL.createObjectURL(e.target.files[0]));
+    const file = e.target.files?.[0];
+    if (file) setPreview(URL.createObjectURL(file));
   };
 
   const submitForm = async (e) => {
@@ -16,7 +19,7 @@ export default function AddTestimonial({ closeDialog, updateTestimonials }) {
     const formData = new FormData(e.target);
 
     try {
-      const res = await fetch(`${process.env.REACT_APP_API_URL}/api/reviews`, {
+      const res = await fetch(`${API}/api/reviews`, {
         method: "POST",
         body: formData,
       });
@@ -29,22 +32,21 @@ export default function AddTestimonial({ closeDialog, updateTestimonials }) {
         setPreview("");
         closeDialog();
       } else {
-        const errMsg = await res.text();
-        setResult(errMsg || "Error adding testimonial");
+        const text = await res.text();
+        setResult(text || "Error adding testimonial");
       }
     } catch (err) {
       console.error(err);
+      setResult("Network or server error");
     }
   };
 
   return (
     <div className="modal-overlay">
-      <div className="modal">
-        <button className="close-btn" onClick={closeDialog}>
-          &times;
-        </button>
+      <div className="modal form-modal">
+        <button className="modal-close" onClick={closeDialog}>&times;</button>
 
-        <form onSubmit={submitForm}>
+        <form className="add-form" onSubmit={submitForm}>
           <h3>Add New Testimonial</h3>
 
           <label>Client Name:</label>
@@ -70,7 +72,11 @@ export default function AddTestimonial({ closeDialog, updateTestimonials }) {
             </div>
           </div>
 
-          <button type="submit">Submit</button>
+          <div className="modal-buttons">
+            <button type="submit" className="save-btn">Submit</button>
+            <button type="button" className="cancel-btn" onClick={closeDialog}>Cancel</button>
+          </div>
+
           <p>{result}</p>
         </form>
       </div>
