@@ -4,7 +4,6 @@ import TestimonialPopup from "../components/TestimonialPopup";
 import AddTestimonial from "../components/AddTestimonial";
 import EditTestimonial from "../components/EditTestimonial";
 import "../css/testimonials.css";
-import "../css/AddTestimonial.css"
 
 const API = process.env.REACT_APP_API_URL || "https://mavdog-server-testimonials.onrender.com";
 
@@ -62,22 +61,11 @@ export default function Testimonials() {
         ))}
       </div>
 
-      {selected && (
-        <TestimonialPopup
-          testimonial={selected}
-          onClose={() => setSelected(null)}
-          onEdit={() => { setEditing(selected); setSelected(null); }}
-          onDelete={async (id) => {
-            if (!window.confirm("Delete this testimonial?")) return;
-            const res = await fetch(`${API}/api/reviews/${id}`, { method: "DELETE" });
-            if (res.ok) {
-              deleteHandler(id);
-              setSelected(null);
-              setStatus("Deleted");
-            } else {
-              setStatus("Delete failed");
-            }
-          }}
+      {deleting && (
+        <DeleteTestimonial
+          testimonial={deleting}
+          closeDialog={() => setDeleting(null)}
+          updateTestimonials={deleteHandler}
         />
       )}
     </section>
