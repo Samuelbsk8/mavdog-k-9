@@ -42,8 +42,16 @@
   color: var(--accent-sage);
 }
 
+.testimonial-training p {
+    font-size: 0.9rem;
+    color: var(--accent-sage);
+}
+
 .testimonial-review {
-  font-size: 0.95rem;
   margin-top: 0.5rem;
-  color: var(--dark-color);
+}
+
+.testimonial-review p{
+    font-size: 0.95rem;
+    color: var(--dark-color);
 }
