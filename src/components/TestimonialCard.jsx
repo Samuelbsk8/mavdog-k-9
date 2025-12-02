@@ -1,5 +1,5 @@
 import React from "react";
-import "../css/testimonialCard";
+import "../css/TestimonialCard";
 
 export default function TestimonialCard({ item, onClick }) {
   const totalStars = 5;
@@ -17,7 +17,7 @@ export default function TestimonialCard({ item, onClick }) {
       <h2>
         {item.client_name} & {item.dog_name}
       </h2>
-      <p className="type">Training Type: {item.training_type}</p>
+      <p>Training Type: {item.training_type}</p>
       <p className="stars">
         {starsArray.map((filled, i) => (
           <span key={i}>{filled ? "★" : "☆"}</span>
