@@ -2,8 +2,15 @@ import React, { useState } from "react";
 import "../css/EditTestimonial.css";
 
 export default function EditTestimonial({ testimonial, closeDialog, updateTestimonials }) {
+
+  const getFullImageUrl = (img) => {
+    if (!img) return "";
+    if (img.startsWith("http")) return img;
+    return `${process.env.REACT_APP_API_URL}/${img}`;
+  };
+
   const [result, setResult] = useState("");
-  const [preview, setPreview] = useState(testimonial.img_name || "");
+  const [preview, setPreview] = useState(getFullImageUrl(testimonial.img_name));
 
   const uploadImage = (e) => {
     setPreview(URL.createObjectURL(e.target.files[0]));
@@ -24,7 +31,6 @@ export default function EditTestimonial({ testimonial, closeDialog, updateTestim
       if (res.ok) {
         const updatedReview = await res.json();
         updateTestimonials(updatedReview);
-        setResult("Testimonial updated successfully!");
         closeDialog();
       } else {
         const errMsg = await res.text();
@@ -44,9 +50,8 @@ export default function EditTestimonial({ testimonial, closeDialog, updateTestim
         method: "DELETE",
       });
 
-
       if (res.ok) {
-        updateTestimonials({ _id: testimonial._id, deleted: true }); // remove locally
+        updateTestimonials({ _id: testimonial._id, deleted: true });
         closeDialog();
       } else {
         const errMsg = await res.text();
@@ -91,7 +96,9 @@ export default function EditTestimonial({ testimonial, closeDialog, updateTestim
 
           <div style={{ display: "flex", justifyContent: "space-between", marginTop: "1rem" }}>
             <button type="submit">Save</button>
-            <button type="button" onClick={handleDelete} style={{ backgroundColor: "#d9534f" }}>Delete</button>
+            <button type="button" onClick={handleDelete} style={{ backgroundColor: "#d9534f" }}>
+              Delete
+            </button>
           </div>
 
           <p>{result}</p>

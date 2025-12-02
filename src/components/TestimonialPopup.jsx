@@ -4,12 +4,16 @@ import "../css/testimonialPopup.css";
 export default function TestimonialPopup({ testimonial, onClose, onEdit, onDelete }) {
   if (!testimonial) return null;
 
+  const getFullImageUrl = (img) => {
+    if (!img) return "";
+    if (img.startsWith("http")) return img;
+    return `${process.env.REACT_APP_API_URL}/${img}`;
+  };
+
+  const imgSrc = getFullImageUrl(testimonial.img_name);
+
   const totalStars = 5;
   const filledStars = testimonial.stars || 0;
-  const starsArray = Array.from({ length: totalStars }, (_, i) => i < filledStars);
-  const imgSrc = testimonial.img_name.startsWith('/')
-    ? testimonial.img_name
-    : `${process.env.PUBLIC_URL}/${testimonial.img_name}`;
 
   return (
     <div className="popup-overlay" onClick={onClose}>
@@ -19,9 +23,10 @@ export default function TestimonialPopup({ testimonial, onClose, onEdit, onDelet
         <div className="popup-header">
           <img src={imgSrc} alt={testimonial.dog_name || "Dog"} className="popup-image" />
           <h2>{testimonial.client_name} & {testimonial.dog_name}</h2>
+
           <p className="popup-stars">
-            {starsArray.map((filled, i) => (
-              <span key={i}>{filled ? "★" : "☆"}</span>
+            {[...Array(totalStars)].map((_, i) => (
+              <span key={i}>{i < filledStars ? "★" : "☆"}</span>
             ))}
           </p>
         </div>
