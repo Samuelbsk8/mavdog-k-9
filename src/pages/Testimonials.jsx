@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import TestimonialCard from "../components/TestimonialCard";
+import TestimonialPopup from "../components/TestimonialPopup";
 import AddTestimonial from "../components/AddTestimonial";
 import EditTestimonial from "../components/EditTestimonial";
 import DeleteTestimonial from "../components/DeleteTestimonial";
@@ -10,6 +11,7 @@ const API = "https://mavdog-server-testimonials.onrender.com";
 export default function Testimonials() {
   const [testimonials, setTestimonials] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [selected, setSelected] = useState(null);
   const [showAdd, setShowAdd] = useState(false);
   const [editing, setEditing] = useState(null);
   const [deleting, setDeleting] = useState(null);
@@ -79,13 +81,27 @@ export default function Testimonials() {
         />
       )}
 
+      {selected && (
+        <TestimonialPopup
+          testimonial={selected}
+          onClose={() => setSelected(null)}
+          onEdit={() => {
+            setEditing(selected);
+            setSelected(null);
+          }}
+          onDelete={() => {
+            setDeleting(selected);
+            setSelected(null);
+          }}
+        />
+      )}
+
       <div id="testimonials-container" className="columns">
         {testimonials.map((item) => (
           <TestimonialCard
             key={item._id}
             item={item}
-            onEdit={() => setEditing(item)}
-            onDelete={() => setDeleting(item)}
+            onClick={() => setSelected(item)}
           />
         ))}
       </div>
