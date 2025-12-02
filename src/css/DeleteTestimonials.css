@@ -1,49 +1,60 @@
 .popup-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
+    position: fixed;
+    top:0; left:0; width:100%; height:100%;
+    background: rgba(0,0,0,0.6);
+    display:flex; justify-content:center; align-items:center;
+    z-index: 1000;
 }
 
-.popup-content.delete-popup {
-  background: white;
-  padding: 2rem;
-  border-radius: 10px;
-  text-align: center;
-  max-width: 400px;
-  width: 90%;
+.popup-content {
+    background: var(--light-color);
+    padding: 2rem;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 400px;
+    text-align:center;
+    position: relative;
 }
 
-.delete-buttons {
-  display: flex;
-  justify-content: space-around;
-  margin-top: 1.5rem;
+h3 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
 }
 
-.cancel-btn, .confirm-btn {
-  padding: 0.5rem 1.5rem;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
+.form-buttons {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 1.5rem;
 }
 
-.cancel-btn {
-  background-color: #ccc;
+.form-buttons button {
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
 }
 
-.confirm-btn {
-  background-color: #d9534f;
-  color: white;
+.form-buttons button:first-child {
+    background-color: var(--accent-tan);
+    color: var(--light-color);
 }
 
-.delete-status {
-  margin-top: 1rem;
-  color: red;
-  font-weight: bold;
+.form-buttons button:first-child:hover {
+    background-color: var(--primary-color);
+}
+
+.delete-btn {
+    background-color: var(--accent-rust);
+    color: var(--light-color);
+}
+
+.delete-btn:hover {
+    background-color: var(--accent-darkrust);
+}
+
+p {
+    margin-top: 1rem;
+    color: var(--accent-rust);
+    font-weight: bold;
 }

@@ -1,35 +1,34 @@
 import React, { useState } from "react";
-import "../css/DeleteTestimonials.css";
+import "../css/DeleteTestimonial.css";
 
-export default function DeleteTestimonial({ testimonial, closeDialog, deleteHandler }) {
+export default function DeleteTestimonial({ testimonial, closeDialog, updateTestimonials }) {
   const [result, setResult] = useState("");
 
-  const handleDelete = async () => {
+  const deleteReview = async () => {
     try {
-      const res = await fetch(`https://mavdog-server-testimonials.onrender.com/api/reviews/${testimonial._id}`, {
-        method: "DELETE",
+      const res = await fetch(`${process.env.REACT_APP_API_URL}/api/reviews/${testimonial._id}`, {
+        method: "DELETE"
       });
-
       if (res.ok) {
-        deleteHandler(testimonial._id);
+        updateTestimonials(testimonial._id);
+        closeDialog();
       } else {
         setResult("Failed to delete testimonial");
       }
-    } catch (err) {
-      console.error(err);
+    } catch {
       setResult("Network error");
     }
   };
 
   return (
     <div className="popup-overlay">
-      <div className="popup-content delete-popup">
-        <h3>Are you sure you want to delete {testimonial.client_name} & {testimonial.dog_name}?</h3>
-        <div className="delete-buttons">
-          <button onClick={closeDialog} className="cancel-btn">No</button>
-          <button onClick={handleDelete} className="confirm-btn">Yes</button>
+      <div className="popup-content">
+        <h3>Delete {testimonial.client_name} & {testimonial.dog_name}?</h3>
+        <div className="form-buttons">
+          <button onClick={closeDialog}>Cancel</button>
+          <button onClick={deleteReview} className="delete-btn">Delete</button>
         </div>
-        {result && <p className="delete-status">{result}</p>}
+        <p>{result}</p>
       </div>
     </div>
   );

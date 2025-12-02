@@ -1,77 +1,76 @@
 import React, { useState } from "react";
+import "../css/EditTestimonial.css";
 
 export default function EditTestimonial({ testimonial, closeDialog, updateTestimonials }) {
   const [result, setResult] = useState("");
-  const [preview, setPreview] = useState(testimonial.img_name ? `https://mavdog-server-testimonials.onrender.com/${testimonial.img_name}` : "");
+  const [preview, setPreview] = useState(
+    testimonial.img_name.startsWith("http")
+      ? testimonial.img_name
+      : `${process.env.REACT_APP_API_URL}/${testimonial.img_name}`
+  );
 
-  const uploadImage = (e) => {
-    setPreview(URL.createObjectURL(e.target.files[0]));
-  };
+  const uploadImage = (e) => setPreview(URL.createObjectURL(e.target.files[0]));
 
-  const onSubmit = async (e) => {
+  const submitForm = async (e) => {
     e.preventDefault();
-    setResult("... sending");
+    setResult("Updating...");
 
     const formData = new FormData(e.target);
-
     try {
-      const res = await fetch(`https://mavdog-server-testimonials.onrender.com/api/reviews/${testimonial._id}`, {
+      const res = await fetch(`${process.env.REACT_APP_API_URL}/api/reviews/${testimonial._id}`, {
         method: "PUT",
-        body: formData,
+        body: formData
       });
 
       if (res.ok) {
-        const updatedReview = await res.json();
-        setResult("Testimonial updated successfully");
-        e.target.reset();
+        const updated = await res.json();
+        updateTestimonials(updated);
         closeDialog();
-        updateTestimonials(updatedReview);
       } else {
-        setResult("Error editing testimonial");
+        const errMsg = await res.text();
+        setResult(errMsg || "Error updating testimonial");
       }
-    } catch (err) {
-      console.error(err);
+    } catch {
       setResult("Network or server error");
     }
   };
 
   return (
-    <form onSubmit={onSubmit} className="edit-testimonial-form">
-      <p>
-        <label>Client Name:</label>
-        <input type="text" name="client_name" defaultValue={testimonial.client_name} required />
-      </p>
-      <p>
-        <label>Dog Name:</label>
-        <input type="text" name="dog_name" defaultValue={testimonial.dog_name} required />
-      </p>
-      <p>
-        <label>Stars (1–5):</label>
-        <input type="number" name="stars" min="1" max="5" defaultValue={testimonial.stars} required />
-      </p>
-      <p>
-        <label>Training Type:</label>
-        <input type="text" name="training_type" defaultValue={testimonial.training_type} required />
-      </p>
-      <p>
-        <label>Review:</label>
-        <textarea name="review" defaultValue={testimonial.review} required></textarea>
-      </p>
+    <div className="popup-overlay">
+      <div className="popup-content">
+        <button className="close-btn" onClick={closeDialog}>&times;</button>
+        <form onSubmit={submitForm}>
+          <h3>Edit Testimonial</h3>
+          <label>Client Name:</label>
+          <input name="client_name" required minLength={2} defaultValue={testimonial.client_name} />
 
-      <section>
-        <div>
-          {preview && <img id="img-prev" src={preview} alt="preview" />}
-        </div>
-        <p>
-          <label>Upload Image:</label>
-          <input type="file" name="img" accept="image/*" onChange={uploadImage} />
-        </p>
-      </section>
+          <label>Dog Name:</label>
+          <input name="dog_name" required minLength={1} defaultValue={testimonial.dog_name} />
 
-      <p>
-        <button type="submit">Submit</button>
-      </p>
-      <p>{result}</p>
-    </form>
+          <label>Stars (1–5):</label>
+          <input type="number" name="stars" min="1" max="5" required defaultValue={testimonial.stars} />
+
+          <label>Training Type:</label>
+          <input name="training_type" required defaultValue={testimonial.training_type} />
+
+          <label>Review:</label>
+          <textarea name="review" required minLength={5} defaultValue={testimonial.review}></textarea>
+
+          <div className="image-row">
+            {preview && <img src={preview} alt="preview" id="img-prev" />}
+            <div>
+              <label>Upload Image:</label>
+              <input type="file" name="img" accept="image/*" onChange={uploadImage} />
+            </div>
+          </div>
+
+          <div className="form-buttons">
+            <button type="submit">Save</button>
+            <button type="button" onClick={closeDialog}>Cancel</button>
+          </div>
+          <p>{result}</p>
+        </form>
+      </div>
+    </div>
   );
 }
