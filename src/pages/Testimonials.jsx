@@ -5,7 +5,9 @@ import AddTestimonial from "../components/AddTestimonial";
 import EditTestimonial from "../components/EditTestimonial";
 import "../css/testimonials.css";
 
-const API = process.env.REACT_APP_API_URL || "https://mavdog-server-testimonials.onrender.com";
+const API =
+  process.env.REACT_APP_API_URL ||
+  "https://mavdog-server-testimonials.onrender.com";
 
 export default function Testimonials() {
   const [testimonials, setTestimonials] = useState([]);
@@ -18,13 +20,26 @@ export default function Testimonials() {
   useEffect(() => {
     fetch(`${API}/api/reviews`)
       .then((r) => r.json())
-      .then((data) => { setTestimonials(data); setLoading(false); })
-      .catch((e) => { console.error(e); setLoading(false); });
+      .then((data) => {
+        setTestimonials(data);
+        setLoading(false);
+      })
+      .catch((e) => {
+        console.error(e);
+        setLoading(false);
+      });
   }, []);
 
-  const addHandler = (newReview) => setTestimonials((p) => [...p, newReview]);
-  const updateHandler = (updated) => setTestimonials((p) => p.map(t => t._id === updated._id ? updated : t));
-  const deleteHandler = (id) => setTestimonials((p) => p.filter(t => t._id !== id));
+  const addHandler = (newReview) =>
+    setTestimonials((prev) => [...prev, newReview]);
+
+  const updateHandler = (updated) =>
+    setTestimonials((prev) =>
+      prev.map((t) => (t._id === updated._id ? updated : t))
+    );
+
+  const deleteHandler = (id) =>
+    setTestimonials((prev) => prev.filter((t) => t._id !== id));
 
   if (loading) return <p>Loading testimonials...</p>;
 
@@ -33,15 +48,37 @@ export default function Testimonials() {
       <h1>Client Testimonials</h1>
       {status && <p className="status">{status}</p>}
 
-      <button className="add-btn" onClick={() => setShowAdd(true)}>+ Add Testimonial</button>
+      <button className="add-btn" onClick={() => setShowAdd(true)}>
+        + Add Testimonial
+      </button>
 
-      {showAdd && <AddTestimonial closeDialog={() => setShowAdd(false)} updateTestimonials={addHandler} setStatus={setStatus} />}
+      {showAdd && (
+        <AddTestimonial
+          closeDialog={() => setShowAdd(false)}
+          updateTestimonials={addHandler}
+          setStatus={setStatus}
+        />
+      )}
 
-      {editing && <EditTestimonial testimonial={editing} closeDialog={() => setEditing(null)} onSave={(u) => { updateHandler(u); setEditing(null); setStatus("Updated"); }} />}
+      {editing && (
+        <EditTestimonial
+          testimonial={editing}
+          closeDialog={() => setEditing(null)}
+          onSave={(updated) => {
+            updateHandler(updated);
+            setEditing(null);
+            setStatus("Updated testimonial.");
+          }}
+        />
+      )}
 
       <div id="testimonials-container" className="columns">
-        {testimonials.map(item => (
-          <TestimonialCard key={item._id} item={item} onClick={() => setSelected(item)} />
+        {testimonials.map((item) => (
+          <TestimonialCard
+            key={item._id}
+            item={item}
+            onClick={() => setSelected(item)}
+          />
         ))}
       </div>
 
@@ -49,16 +86,21 @@ export default function Testimonials() {
         <TestimonialPopup
           testimonial={selected}
           onClose={() => setSelected(null)}
-          onEdit={() => { setEditing(selected); setSelected(null); }}
+          onEdit={(item) => {
+            setEditing(item);
+            setSelected(null);
+          }}
           onDelete={async (id) => {
             if (!window.confirm("Delete this testimonial?")) return;
-            const res = await fetch(`${API}/api/reviews/${id}`, { method: "DELETE" });
+            const res = await fetch(`${API}/api/reviews/${id}`, {
+              method: "DELETE",
+            });
             if (res.ok) {
               deleteHandler(id);
               setSelected(null);
-              setStatus("Deleted");
+              setStatus("Deleted testimonial.");
             } else {
-              setStatus("Delete failed");
+              setStatus("Delete failed.");
             }
           }}
         />
