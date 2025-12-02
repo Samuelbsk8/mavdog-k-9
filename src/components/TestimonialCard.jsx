@@ -1,5 +1,5 @@
 import React from "react";
-import "../css/TestimonialCard";
+import "../css/TestimonialCard.css";
 
 export default function TestimonialCard({ item, onClick }) {
   const totalStars = 5;
