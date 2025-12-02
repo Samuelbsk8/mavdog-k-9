@@ -34,7 +34,6 @@ export default function AddTestimonial({ closeDialog, updateTestimonials }) {
       }
     } catch (err) {
       console.error(err);
-      setResult("Network or server error");
     }
   };
 
