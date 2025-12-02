@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import EditTestimonial from "../components/EditTestimonial";
 import "../css/AddTestimonial.css";
 
 export default function AddTestimonial({ closeDialog, updateTestimonials }) {
