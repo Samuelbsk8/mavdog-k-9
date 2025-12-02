@@ -1,90 +1,56 @@
-.popup-overlay {
-    position: fixed;
-    top:0; left:0; width:100%; height:100%;
-    background: rgba(0,0,0,0.6);
-    display:flex; justify-content:center; align-items:center;
-    z-index: 1000;
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.55);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  z-index: 9999;
 }
 
-.popup-content {
-    background: var(--light-color);
-    padding: 2rem;
-    border-radius: 10px;
-    width: 90%;
-    max-width: 500px;
-    position: relative;
+.modal {
+  background: var(--light-color);
+  color: var(--dark-color);
+  width: 90%;
+  max-width: 600px;
+  max-height: 90vh;
+  padding: 20px;
+  border-radius: 12px;
+  overflow-y: auto;
+  box-shadow: 0 0 25px rgba(0,0,0,0.35);
 }
 
-.close-btn {
-    position: absolute;
-    top: 10px; right: 15px;
-    background: none;
-    border: none;
-    font-size: 1.5rem;
-    cursor: pointer;
-    color: var(--dark-color);
+.edit-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
-form h3 {
-    margin-bottom: 1rem;
-    color: var(--primary-color);
+.edit-form input,
+.edit-form textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--mid-neutral);
+  border-radius: 6px;
+  background: var(--light-color);
 }
 
-form label {
-    display: block;
-    margin-top: 0.5rem;
-    color: var(--dark-color);
-    font-weight: 500;
+.save-btn {
+  background: var(--accent-sage);
+  color: white;
+  padding: 10px 16px;
+  border-radius: 6px;
+  cursor: pointer;
 }
 
-form input, form textarea {
-    width: 100%;
-    padding: 0.4rem;
-    margin-top: 0.2rem;
-    border: 1px solid var(--mid-neutral);
-    border-radius: 5px;
-}
-
-.image-row {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin-top: 1rem;
-}
-
-#img-prev {
-    width: 80px;
-    height: 80px;
-    object-fit: cover;
-    border-radius: 5px;
-}
-
-.form-buttons {
-    display:flex; justify-content: space-between; margin-top: 1rem;
-}
-
-.form-buttons button {
-    padding: 0.5rem 1rem;
-    border-radius: 5px;
-    border: none;
-    cursor: pointer;
-    font-weight: bold;
-}
-
-.form-buttons button[type="submit"] {
-    background-color: var(--light-green);
-    color: var(--dark-color);
-}
-
-.form-buttons button[type="submit"]:hover {
-    background-color: var(--accent-sage);
-}
-
-.form-buttons button[type="button"] {
-    background-color: var(--accent-tan);
-    color: var(--light-color);
-}
-
-.form-buttons button[type="button"]:hover {
-    background-color: var(--primary-color);
+.cancel-btn {
+  background: var(--accent-tan);
+  color: white;
+  padding: 10px 16px;
+  border-radius: 6px;
+  cursor: pointer;
 }
