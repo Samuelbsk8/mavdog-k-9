@@ -1,14 +1,12 @@
-#testimonials-section {
-  position: relative;
-  z-index: 1;
+#testimonials-section h1{
+  color: var(--accent-tan);
+  text-align: center;
+  margin: 0;
+  padding: 20px;
+  border-top: 2px solid var(--accent-tan);
+  border-bottom: 2px solid var(--accent-tan);
 }
 
-.modal {
-  position: fixed !important;
-  inset: 0 !important;
-  display: flex !important;
-  justify-content: center !important;
-  align-items: center !important;
-  background: rgba(0,0,0,0.6) !important;
-  z-index: 9999 !important;
+#testimonials-container{
+  flex-wrap: wrap;
 }

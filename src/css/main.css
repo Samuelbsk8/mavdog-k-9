@@ -20,14 +20,6 @@ body, html {
     overflow-x: hidden;
     background: var(--dark-color); 
 }
-body, html, #root {
-  height: 100%;
-  overflow: visible;
-}
-
-section {
-  overflow: visible;
-}
 
 h1, h2, h3 {
     color: var(--dark-color);
