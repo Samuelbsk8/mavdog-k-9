@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "../css/AddTestimonial.css";
 
-const API = process.env.REACT_APP_API_URL || "http://localhost:3001";
+const API = process.env.REACT_APP_API_URL || "https://mavdog-server-testimonials.onrender.com";
 
 export default function AddTestimonial({ closeDialog, updateTestimonials }) {
   const [result, setResult] = useState("");
