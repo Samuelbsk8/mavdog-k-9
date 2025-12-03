@@ -1,17 +1,19 @@
 .modal {
-  position:fixed;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
+  position: fixed;
+  top:0; left:0; width:100%; height:100%;
+  background: rgba(0,0,0,0.6);
+  display:flex; justify-content:center; align-items:center;
+  z-index: 1000;
+}
+
+.delete-modal {
   background: var(--light-color);
-  color: var(--dark-color);
+  padding: 2rem;
+  border-radius: 10px;
   width: 90%;
-  max-width: 600px;
-  max-height: 90vh;
-  padding: 20px;
-  border-radius: 12px;
-  overflow-y: auto;
-  box-shadow: 0 0 25px rgba(0,0,0,0.35);
+  max-width: 400px;
+  text-align:center;
+  position: relative;
 }
 
 .delete-modal h2 {
@@ -28,6 +30,7 @@
 .delete-btn {
   background: var(--accent-darkrust);
   color: white;
+
   padding: 10px 18px;
   border-radius: 6px;
   cursor: pointer;
