@@ -21,74 +21,63 @@ export default function Testimonials() {
     fetch(`${API}/api/reviews`)
       .then((r) => r.json())
       .then((data) => {
-        setTestimonials(data);
+        setTestimonials(data || []);
         setLoading(false);
       })
       .catch((err) => {
-        console.error(err);
+        console.error("fetch testimonials failed", err);
         setLoading(false);
       });
   }, []);
 
-  const addHandler = (newReview) =>
-    setTestimonials((prev) => [...prev, newReview]);
+  const addHandler = (newReview) => setTestimonials((p) => [...p, newReview]);
 
   const updateHandler = (updated) =>
-    setTestimonials((prev) =>
-      prev.map((t) => (t._id === updated._id ? updated : t))
-    );
+    setTestimonials((p) => p.map((t) => (t._id === updated._id ? updated : t)));
 
-  const deleteHandler = (id) =>
-    setTestimonials((prev) => prev.filter((t) => t._id !== id));
+  const deleteHandler = (id) => setTestimonials((p) => p.filter((t) => t._id !== id));
 
   if (loading) return <p>Loading testimonials...</p>;
 
   return (
     <section id="testimonials-section">
       <h1>Client Testimonials</h1>
+      {status && <p className="status">{status}</p>}
 
-      <button className="add-btn" onClick={() => setShowAdd(true)}>
-        + Add Testimonial
-      </button>
+      <button className="add-btn" onClick={() => setShowAdd(true)}>+ Add Testimonial</button>
 
-      {/* ADD */}
       {showAdd && (
         <AddTestimonial
           closeDialog={() => setShowAdd(false)}
           updateTestimonials={addHandler}
+          setStatus={setStatus}
         />
       )}
 
-      {/* EDIT */}
       {editing && (
         <EditTestimonial
           testimonial={editing}
           closeDialog={() => setEditing(null)}
           updateTestimonials={updateHandler}
+          setStatus={setStatus}
         />
       )}
 
-      {/* DELETE */}
       {deleting && (
         <DeleteTestimonial
           testimonial={deleting}
           closeDialog={() => setDeleting(null)}
           updateTestimonials={deleteHandler}
+          setStatus={setStatus}
         />
       )}
 
-      {/* LIST */}
       <div id="testimonials-container" className="columns">
         {testimonials.map((item) => (
-          <TestimonialCard
-            key={item._id}
-            item={item}
-            onClick={() => setSelected(item)}
-          />
+          <TestimonialCard key={item._id} item={item} onClick={() => setSelected(item)} />
         ))}
       </div>
 
-      {/* POPUP */}
       {selected && (
         <TestimonialPopup
           testimonial={selected}
