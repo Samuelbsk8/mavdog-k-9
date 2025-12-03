@@ -10,3 +10,8 @@
 #testimonials-container{
   flex-wrap: wrap;
 }
+
+#add-btn{
+  display: block;
+  text-align: center;
+}
