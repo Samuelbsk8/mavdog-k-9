@@ -37,8 +37,8 @@ export default function EditTestimonial({ testimonial, closeDialog, updateTestim
   };
 
   return (
-    <div className="popup-overlay">
-      <div className="popup-content">
+    <div className="modal-overlay">
+      <div className="modal">
         <button className="close-btn" onClick={closeDialog}>&times;</button>
         <form onSubmit={submitForm}>
           <h3>Edit Testimonial</h3>

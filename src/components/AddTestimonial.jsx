@@ -43,7 +43,7 @@ export default function AddTestimonial({ closeDialog, updateTestimonials }) {
 
   return (
     <div className="modal-overlay">
-      <div className="modal form-modal">
+      <div className="modal">
         <button className="modal-close" onClick={closeDialog}>&times;</button>
 
         <form className="add-form" onSubmit={submitForm}>

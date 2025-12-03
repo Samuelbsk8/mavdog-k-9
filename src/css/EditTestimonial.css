@@ -35,8 +35,8 @@ img{
   margin:15px auto;
 }
 
-.edit-form input,
-.edit-form textarea {
+input,
+textarea {
   width: 100%;
   padding: 8px;
   border: 1px solid var(--mid-neutral);
@@ -44,15 +44,7 @@ img{
   background: var(--light-color);
 }
 
-.save-btn {
-  background: var(--accent-sage);
-  color: white;
-  padding: 10px 16px;
-  border-radius: 6px;
-  cursor: pointer;
-}
-
-.cancel-btn {
+#form-buttons{
   background: var(--accent-tan);
   color: white;
   padding: 10px 16px;
