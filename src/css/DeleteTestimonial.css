@@ -1,47 +1,42 @@
-.modal {
+/* Background overlay */
+.deleteTestimonial_modal-bg {
   position: fixed !important;
-  top: 0;      
+  top: 0;
   left: 0;
   width: 100vw;
   height: 100vh !important;
   display: flex !important;
   justify-content: center;
   align-items: center;
-  background: rgba(0,0,0,0.6) !important;
+  background: rgba(0, 0, 0, 0.6) !important;
   z-index: 99999 !important;
 }
 
-.delete-modal {
+/* Modal box */
+.deleteTestimonial_modal {
   background: var(--light-color);
   padding: 2rem;
   border-radius: 10px;
   width: 90%;
   max-width: 400px;
-  text-align:center;
+  text-align: center;
   position: relative;
 }
 
-.delete-modal h2 {
+.deleteTestimonial_modal h2 {
   color: var(--accent-rust);
   margin-bottom: 10px;
 }
 
-.modal-buttons {
+/* Buttons layout */
+.deleteTestimonial_buttons {
   display: flex;
   justify-content: space-between;
   margin-top: 20px;
 }
 
-.delete-btn {
-  background: var(--accent-darkrust);
-  color: white;
-
-  padding: 10px 18px;
-  border-radius: 6px;
-  cursor: pointer;
-}
-
-.cancel-btn {
+/* Cancel button */
+.deleteTestimonial_cancel {
   background: var(--accent-tan);
   color: white;
   padding: 10px 18px;
@@ -49,7 +44,18 @@
   cursor: pointer;
 }
 
-.result {
+/* Delete button */
+.deleteTestimonial_delete {
+  background: var(--accent-darkrust);
+  color: white;
+  padding: 10px 18px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* Success/error message */
+.deleteTestimonial_result {
   margin-top: 10px;
   font-weight: bold;
 }
+

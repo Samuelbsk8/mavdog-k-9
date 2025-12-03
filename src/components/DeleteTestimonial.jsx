@@ -5,7 +5,11 @@ const API =
   process.env.REACT_APP_API_URL ||
   "https://mavdog-server-testimonials.onrender.com";
 
-export default function DeleteTestimonial({ testimonial, closeDialog, updateTestimonials }) {
+export default function DeleteTestimonial({
+  testimonial,
+  closeDialog,
+  updateTestimonials,
+}) {
   const [result, setResult] = useState("");
 
   const deleteReview = async () => {
@@ -23,18 +27,24 @@ export default function DeleteTestimonial({ testimonial, closeDialog, updateTest
   };
 
   return (
-    <div className="modal">
-      <div className="delete-modal">
+    <div className="deleteTestimonial_modal-bg">
+      <div className="deleteTestimonial_modal">
         <h2>Delete Testimonial</h2>
+
         <p>Are you sure you want to delete the testimonial from:</p>
         <h3>{testimonial.name}</h3>
 
-        <div className="modal-buttons">
-          <button className="cancel-btn" onClick={closeDialog}>Cancel</button>
-          <button className="delete-btn" onClick={deleteReview}>Delete</button>
+        <div className="deleteTestimonial_buttons">
+          <button onClick={closeDialog} className="deleteTestimonial_cancel">
+            Cancel
+          </button>
+
+          <button onClick={deleteReview} className="deleteTestimonial_delete">
+            Delete
+          </button>
         </div>
 
-        <p className="result">{result}</p>
+        <p className="deleteTestimonial_result">{result}</p>
       </div>
     </div>
   );

@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import "../css/AddTestimonial.css";
 
-const API = process.env.REACT_APP_API_URL || "https://mavdog-server-testimonials.onrender.com";
+const API =
+  process.env.REACT_APP_API_URL ||
+  "https://mavdog-server-testimonials.onrender.com";
 
 export default function AddTestimonial({ closeDialog, updateTestimonials }) {
   const [result, setResult] = useState("");
@@ -42,9 +44,11 @@ export default function AddTestimonial({ closeDialog, updateTestimonials }) {
   };
 
   return (
-    <div className="modal-overlay">
-      <div className="modal">
-        <button className="modal-close" onClick={closeDialog}>&times;</button>
+    <div className="add-modal-overlay">
+      <div className="add-modal-container">
+        <button className="add-modal-close" onClick={closeDialog}>
+          &times;
+        </button>
 
         <form className="add-form" onSubmit={submitForm}>
           <h3>Add New Testimonial</h3>
@@ -68,13 +72,22 @@ export default function AddTestimonial({ closeDialog, updateTestimonials }) {
             {preview && <img src={preview} alt="preview" id="img-prev" />}
             <div>
               <label>Upload Image:</label>
-              <input type="file" name="img" accept="image/*" onChange={uploadImage} />
+              <input
+                type="file"
+                name="img"
+                accept="image/*"
+                onChange={uploadImage}
+              />
             </div>
           </div>
 
-          <div className="modal-buttons">
-            <button type="submit" className="save-btn">Submit</button>
-            <button type="button" className="cancel-btn" onClick={closeDialog}>Cancel</button>
+          <div className="add-modal-buttons">
+            <button type="submit" className="save-btn">
+              Submit
+            </button>
+            <button type="button" className="cancel-btn" onClick={closeDialog}>
+              Cancel
+            </button>
           </div>
 
           <p>{result}</p>
