@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/mavdog-k-9/static/css/main.7057113c.css",
+    "main.css": "/mavdog-k-9/static/css/main.55a8837a.css",
     "main.js": "/mavdog-k-9/static/js/main.b4a28487.js",
     "static/media/5N1A3416.jpg": "/mavdog-k-9/static/media/5N1A3416.3505d2353dc25e7e80c9.jpg",
     "static/media/5N1A3386.jpg": "/mavdog-k-9/static/media/5N1A3386.67ca492f9cbc32e6ef63.jpg",
@@ -20,11 +20,11 @@
     "static/media/Harra-laydown.jpg": "/mavdog-k-9/static/media/Harra-laydown.d7b0c5d7301f37dc9b20.jpg",
     "static/media/ronin-run.jpg": "/mavdog-k-9/static/media/ronin-run.9e1dd6338b4ee8df8f2f.jpg",
     "index.html": "/mavdog-k-9/index.html",
-    "main.7057113c.css.map": "/mavdog-k-9/static/css/main.7057113c.css.map",
+    "main.55a8837a.css.map": "/mavdog-k-9/static/css/main.55a8837a.css.map",
     "main.b4a28487.js.map": "/mavdog-k-9/static/js/main.b4a28487.js.map"
   },
   "entrypoints": [
-    "static/css/main.7057113c.css",
+    "static/css/main.55a8837a.css",
     "static/js/main.b4a28487.js"
   ]
 }
