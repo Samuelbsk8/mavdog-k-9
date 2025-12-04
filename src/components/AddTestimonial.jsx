@@ -29,17 +29,12 @@ export default function AddTestimonial({ closeDialog, updateTestimonials }) {
       if (res.ok) {
         const newReview = await res.json();
         updateTestimonials(newReview);
-        setResult("Testimonial added successfully!");
-        e.target.reset();
-        setPreview("");
         closeDialog();
       } else {
-        const text = await res.text();
-        setResult(text || "Error adding testimonial");
+        setResult("Error adding testimonial");
       }
-    } catch (err) {
-      console.error(err);
-      setResult("Network or server error");
+    } catch {
+      setResult("Server error");
     }
   };
 
@@ -54,10 +49,10 @@ export default function AddTestimonial({ closeDialog, updateTestimonials }) {
           <h3>Add New Testimonial</h3>
 
           <label>Client Name:</label>
-          <input name="client_name" required minLength={2} />
+          <input name="client_name" required />
 
           <label>Dog Name:</label>
-          <input name="dog_name" required minLength={1} />
+          <input name="dog_name" required />
 
           <label>Stars (1–5):</label>
           <input type="number" name="stars" min="1" max="5" required />
@@ -66,28 +61,19 @@ export default function AddTestimonial({ closeDialog, updateTestimonials }) {
           <input name="training_type" required />
 
           <label>Review:</label>
-          <textarea name="review" required minLength={5}></textarea>
+          <textarea name="review" required />
 
           <div className="image-row">
-            {preview && <img src={preview} alt="preview" id="img-prev" />}
+            {preview && <img src={preview} id="img-prev" alt="" />}
             <div>
               <label>Upload Image:</label>
-              <input
-                type="file"
-                name="img"
-                accept="image/*"
-                onChange={uploadImage}
-              />
+              <input type="file" name="img" accept="image/*" onChange={uploadImage} />
             </div>
           </div>
 
           <div className="add-modal-buttons">
-            <button type="submit" className="save-btn">
-              Submit
-            </button>
-            <button type="button" className="cancel-btn" onClick={closeDialog}>
-              Cancel
-            </button>
+            <button type="submit" className="save-btn">Submit</button>
+            <button type="button" className="cancel-btn" onClick={closeDialog}>Cancel</button>
           </div>
 
           <p>{result}</p>

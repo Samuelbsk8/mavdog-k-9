@@ -9,9 +9,7 @@ export default function TestimonialPopup({ testimonial, onClose, onEdit, onDelet
   const filledStars = testimonial.stars || 0;
   const starsArray = Array.from({ length: totalStars }, (_, i) => i < filledStars);
 
-  const imgSrc = testimonial.img_name.startsWith("http")
-    ? testimonial.img_name
-    : `${process.env.REACT_APP_API_URL || ""}/${testimonial.img_name}`;
+  const imgSrc = testimonial.img;
 
   return (
     <div className="popup-overlay" onClick={onClose}>
@@ -21,7 +19,9 @@ export default function TestimonialPopup({ testimonial, onClose, onEdit, onDelet
         <div className="popup-header">
           {imgSrc && <img src={imgSrc} alt={testimonial.dog_name} className="popup-image" />}
           <h2>{testimonial.client_name} & {testimonial.dog_name}</h2>
-          <p className="popup-stars">{starsArray.map((f, i) => <span key={i}>{f ? "★" : "☆"}</span>)}</p>
+          <p className="popup-stars">
+            {starsArray.map((f, i) => <span key={i}>{f ? "★" : "☆"}</span>)}
+          </p>
         </div>
 
         <div className="popup-body">

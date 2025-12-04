@@ -25,10 +25,6 @@ export default function Testimonials() {
       .then((data) => {
         setTestimonials(data || []);
         setLoading(false);
-      })
-      .catch((err) => {
-        console.error("fetch testimonials failed", err);
-        setLoading(false);
       });
   }, []);
 
@@ -49,8 +45,6 @@ export default function Testimonials() {
     <section id="testimonials-section">
       <h1>Client Testimonials</h1>
 
-      {status && <p className="status">{status}</p>}
-
       <button className="add-btn" onClick={() => setShowAdd(true)}>
         + Add Testimonial
       </button>
@@ -59,7 +53,6 @@ export default function Testimonials() {
         <AddTestimonial
           closeDialog={() => setShowAdd(false)}
           updateTestimonials={addHandler}
-          setStatus={setStatus}
         />
       )}
 
@@ -68,7 +61,6 @@ export default function Testimonials() {
           testimonial={editing}
           closeDialog={() => setEditing(null)}
           updateTestimonials={updateHandler}
-          setStatus={setStatus}
         />
       )}
 
@@ -77,7 +69,6 @@ export default function Testimonials() {
           testimonial={deleting}
           closeDialog={() => setDeleting(null)}
           updateTestimonials={deleteHandler}
-          setStatus={setStatus}
         />
       )}
 

@@ -18,12 +18,9 @@ export default function DeleteTestimonial({
     });
 
     if (res.ok) {
-      setResult("Deleted successfully");
       updateTestimonials(testimonial._id);
       closeDialog();
-    } else {
-      setResult("Delete failed");
-    }
+    } else setResult("Delete failed");
   };
 
   return (
@@ -32,7 +29,7 @@ export default function DeleteTestimonial({
         <h2>Delete Testimonial</h2>
 
         <p>Are you sure you want to delete the testimonial from:</p>
-        <h3>{testimonial.name}</h3>
+        <h3>{testimonial.client_name}</h3>
 
         <div className="deleteTestimonial_buttons">
           <button onClick={closeDialog} className="deleteTestimonial_cancel">

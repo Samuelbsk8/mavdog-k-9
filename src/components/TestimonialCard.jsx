@@ -9,7 +9,7 @@ export default function TestimonialCard({ item, onClick }) {
     (_, i) => i < filledStars
   );
 
-  const imgSrc = `https://mavdog-server-testimonials.onrender.com/${item.img_name}`;
+  const imgSrc = item.img;
 
   return (
     <div className="testimonial-card" onClick={onClick}>

@@ -3,11 +3,8 @@ import "../css/EditTestimonial.css";
 
 export default function EditTestimonial({ testimonial, closeDialog, updateTestimonials }) {
   const [result, setResult] = useState("");
-  const [preview, setPreview] = useState(
-    testimonial.img_name.startsWith("http")
-      ? testimonial.img_name
-      : `${process.env.REACT_APP_API_URL}/${testimonial.img_name}`
-  );
+
+  const [preview, setPreview] = useState(testimonial.img);
 
   const uploadImage = (e) => {
     const file = e.target.files?.[0];
@@ -50,25 +47,56 @@ export default function EditTestimonial({ testimonial, closeDialog, updateTestim
           <h3>Edit Testimonial</h3>
 
           <label>Client Name:</label>
-          <input name="client_name" required minLength={2} defaultValue={testimonial.client_name} />
+          <input
+            name="client_name"
+            required
+            minLength={2}
+            defaultValue={testimonial.client_name}
+          />
 
           <label>Dog Name:</label>
-          <input name="dog_name" required minLength={1} defaultValue={testimonial.dog_name} />
+          <input
+            name="dog_name"
+            required
+            minLength={1}
+            defaultValue={testimonial.dog_name}
+          />
 
           <label>Stars (1–5):</label>
-          <input type="number" name="stars" min="1" max="5" required defaultValue={testimonial.stars} />
+          <input
+            type="number"
+            name="stars"
+            min="1"
+            max="5"
+            required
+            defaultValue={testimonial.stars}
+          />
 
           <label>Training Type:</label>
-          <input name="training_type" required defaultValue={testimonial.training_type} />
+          <input
+            name="training_type"
+            required
+            defaultValue={testimonial.training_type}
+          />
 
           <label>Review:</label>
-          <textarea name="review" required minLength={5} defaultValue={testimonial.review}></textarea>
+          <textarea
+            name="review"
+            required
+            minLength={5}
+            defaultValue={testimonial.review}
+          ></textarea>
 
           <div className="image-row">
             {preview && <img src={preview} alt="preview" id="img-prev" />}
             <div>
               <label>Upload Image:</label>
-              <input type="file" name="img" accept="image/*" onChange={uploadImage} />
+              <input
+                type="file"
+                name="img"
+                accept="image/*"
+                onChange={uploadImage}
+              />
             </div>
           </div>
 
